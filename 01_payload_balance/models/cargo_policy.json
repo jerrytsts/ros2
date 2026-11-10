@@ -1,0 +1,21 @@
+{
+  "signals": [
+    "pitch",
+    "pitch_rate",
+    "disturbance",
+    "mass_norm",
+    "phase_sin",
+    "phase_cos",
+    "ankle_prev",
+    "hip_prev"
+  ],
+  "actions": [
+    "ankle_torque",
+    "hip_torque"
+  ],
+  "hidden": [
+    24,
+    16
+  ],
+  "torque_limit": 150.0
+}

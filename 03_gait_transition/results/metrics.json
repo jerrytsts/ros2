@@ -1,0 +1,20 @@
+{
+  "hermite": {
+    "samples": 2601,
+    "switch_count": 4,
+    "max_command_step": 0.03274349716453036,
+    "max_velocity_step": 0.18390173998506637,
+    "max_acceleration": 36.780347997007524,
+    "final_x": 4.530000000000048
+  },
+  "direct": {
+    "samples": 2601,
+    "switch_count": 4,
+    "max_command_step": 0.032817575247845336,
+    "max_velocity_step": 3.855278228779902,
+    "max_acceleration": 771.0556457559967,
+    "final_x": 4.530000000000048
+  },
+  "velocity_step_reduction_percent": 95.22987112545528,
+  "acceleration_reduction_percent": 95.22987112545613
+}
