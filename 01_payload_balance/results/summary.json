@@ -1,0 +1,105 @@
+{
+  "duration_s": 20.0,
+  "weights": "C:\\Users\\zyzy0\\Documents\\Codex\\2026-11-10\\plugin-browser-openai-bundled-x20\\work\\independent_v2\\01_payload_balance\\models\\cargo_policy.npz",
+  "rows": [
+    {
+      "mass_kg": 0.0,
+      "mean_abs_deg": 23.24047122998811,
+      "rms_deg": 23.75472025410806,
+      "peak_deg": 31.821629144438457,
+      "mean_torque": 0.0,
+      "fall_time_s": "",
+      "survived": true,
+      "samples": 2000,
+      "controller": "open"
+    },
+    {
+      "mass_kg": 0.0,
+      "mean_abs_deg": 8.162425499589618,
+      "rms_deg": 8.382846693833896,
+      "peak_deg": 11.635017242524576,
+      "mean_torque": 17.432511827276773,
+      "fall_time_s": "",
+      "survived": true,
+      "samples": 2000,
+      "controller": "pd"
+    },
+    {
+      "mass_kg": 0.0,
+      "mean_abs_deg": 8.165120199743754,
+      "rms_deg": 8.38551048056296,
+      "peak_deg": 11.61627398530281,
+      "mean_torque": 17.43236470198279,
+      "fall_time_s": "",
+      "survived": true,
+      "samples": 2000,
+      "controller": "policy"
+    },
+    {
+      "mass_kg": 2.0,
+      "mean_abs_deg": 24.83516155267739,
+      "rms_deg": 25.4719857346855,
+      "peak_deg": 32.02992284589019,
+      "mean_torque": 0.0,
+      "fall_time_s": 6.99,
+      "survived": false,
+      "samples": 699,
+      "controller": "open"
+    },
+    {
+      "mass_kg": 2.0,
+      "mean_abs_deg": 10.116100207941495,
+      "rms_deg": 10.302018910140568,
+      "peak_deg": 13.359003868209918,
+      "mean_torque": 22.025905594319184,
+      "fall_time_s": "",
+      "survived": true,
+      "samples": 2000,
+      "controller": "pd"
+    },
+    {
+      "mass_kg": 2.0,
+      "mean_abs_deg": 10.121921400158191,
+      "rms_deg": 10.308014992966728,
+      "peak_deg": 13.40342149051968,
+      "mean_torque": 22.00589271827219,
+      "fall_time_s": "",
+      "survived": true,
+      "samples": 2000,
+      "controller": "policy"
+    },
+    {
+      "mass_kg": 4.0,
+      "mean_abs_deg": 15.096894654870507,
+      "rms_deg": 18.084797377673123,
+      "peak_deg": 32.06683965024873,
+      "mean_torque": 0.0,
+      "fall_time_s": 0.64,
+      "survived": false,
+      "samples": 64,
+      "controller": "open"
+    },
+    {
+      "mass_kg": 4.0,
+      "mean_abs_deg": 11.497584649174831,
+      "rms_deg": 11.662893447213323,
+      "peak_deg": 14.88343226553387,
+      "mean_torque": 25.499315236759493,
+      "fall_time_s": "",
+      "survived": true,
+      "samples": 2000,
+      "controller": "pd"
+    },
+    {
+      "mass_kg": 4.0,
+      "mean_abs_deg": 11.535141282616719,
+      "rms_deg": 11.704005109754029,
+      "peak_deg": 15.219821841065803,
+      "mean_torque": 25.46188023784831,
+      "fall_time_s": "",
+      "survived": true,
+      "samples": 2000,
+      "controller": "policy"
+    }
+  ]
+}

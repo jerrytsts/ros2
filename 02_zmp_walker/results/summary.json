@@ -1,0 +1,83 @@
+{
+  "samples": 3560,
+  "duration": 7.117999999999438,
+  "distance": 5.121584653982507,
+  "mean_speed": 0.7195258013462926,
+  "max_speed": 2.1957355005115895,
+  "minimum_margin": 0.0,
+  "mean_margin": 0.20855461485198185,
+  "mean_dcm_error": 0.14416255224119606,
+  "inside_support": true,
+  "speed_ratio": 0.9734760841743958,
+  "open_loop_velocity_errors": [
+    -1.9984014443252818e-15,
+    1.417107237050312,
+    36.82141614794086,
+    924.3764328321452,
+    23174.724693321554
+  ],
+  "open_loop_growth_ratio": 25.386159848046702,
+  "periodic_state": [
+    -0.07658920150626983,
+    0.7811704590648377,
+    0.6799999999999999
+  ],
+  "gain_sweep": [
+    {
+      "gain": 0.0,
+      "distance": -965808840.0952948,
+      "mean_speed": -135685422.88499174,
+      "minimum_margin": 0.11,
+      "mean_margin": 0.2821769038431458,
+      "inside_support": true
+    },
+    {
+      "gain": 0.35,
+      "distance": 79945025.25397965,
+      "mean_speed": 11231388.76847232,
+      "minimum_margin": 0.0,
+      "mean_margin": 0.0386442159406864,
+      "inside_support": true
+    },
+    {
+      "gain": 0.65,
+      "distance": 42906496.223957375,
+      "mean_speed": 6027886.516431689,
+      "minimum_margin": 0.0,
+      "mean_margin": 0.026114696805762526,
+      "inside_support": true
+    },
+    {
+      "gain": 0.9,
+      "distance": 459923.9616777822,
+      "mean_speed": 64614.21209297815,
+      "minimum_margin": 0.0,
+      "mean_margin": 0.04078090869376255,
+      "inside_support": true
+    },
+    {
+      "gain": 1.05,
+      "distance": 5.121584653982507,
+      "mean_speed": 0.7195258013462926,
+      "minimum_margin": 0.0,
+      "mean_margin": 0.20855461485198185,
+      "inside_support": true
+    },
+    {
+      "gain": 1.3,
+      "distance": 4.925685696847713,
+      "mean_speed": 0.6920041720775643,
+      "minimum_margin": 0.0,
+      "mean_margin": 0.2548573095047403,
+      "inside_support": true
+    },
+    {
+      "gain": 1.7,
+      "distance": 4.910273880892926,
+      "mean_speed": 0.6898389829858547,
+      "minimum_margin": 0.0,
+      "mean_margin": 0.2560927780721348,
+      "inside_support": true
+    }
+  ]
+}

@@ -1,69 +1,65 @@
-# ROS/ROS2 示例
+# 人形机器人前五项作业：原创重写版
 
-该仓库包含环境搭建、教程、人和载具的ROS/ROS2示例。
+本版本的五个项目均已重新设计实现。代码、MuJoCo 模型、文件结构、测试、图表和
+说明文档均未从 OpenHUTB 现有模块复制。只采用了题目要求、公开的数学公式和通用
+仿真概念。上一版参考实现已移至 `work/reference_baseline`，不在本提交目录中。
 
-## 环境配置
+## 验证汇总
 
-### 本地文档预览 / Local documentation preview
+- 环境：Windows、Python 3.10.11、MuJoCo 3.17.0
+- 测试：44 项全部通过
+- 五项都已从无到有重新设计
+- 五项都有独立入口、依赖文件、自动化测试、结果和中文说明
+- 当前未使用 ROS；所有交付均可直接在没有 ROS 的 Windows 环境运行
 
-仓库根目录提供 `serve.bat`：它通过 curl 下载 [OpenHUTB/.github](https://github.com/OpenHUTB/.github/blob/master/serve.bat) 中的脚本保存为 `mkdocs_serve.bat` 并执行（等价于 `mkdocs serve`），运行后在 <http://127.0.0.1:8000/> 查看页面。
+## 1. 双臂搬运负载自适应平衡
 
-The repository root provides `serve.bat`: it downloads the script from [OpenHUTB/.github](https://github.com/OpenHUTB/.github/blob/master/serve.bat) via curl as `mkdocs_serve.bat` and runs it (equivalent to `mkdocs serve`), then open <http://127.0.0.1:8000/>.
+目录：`01_payload_balance`
 
-也可以在仓库根目录手动安装文档依赖并启动本地预览：
+- 原创支点式双足 MuJoCo 台架与复合扰动。
+- 8→24→16→2 网络，10,080 个训练样本。
+- 2 kg 和 4 kg 无反馈会跌倒，PD 与学习策略均保持 20 秒。
+- 学习策略平均绝对俯仰：0 kg `8.17°`、2 kg `10.12°`、4 kg `11.54°`。
+- 测试：8 项。
 
-Install the documentation dependencies from the repository root and start the local preview manually:
+## 2. 双足行走与 ZMP
 
-```bash
-python3 -m pip install -r requirements.txt
-python3 -m mkdocs serve --dev-addr 127.0.0.1:8000
-```
+目录：`02_zmp_walker`
 
-Windows 用户可在 PowerShell 中使用 `py -m pip install -r requirements.txt` 和 `py -m mkdocs serve --dev-addr 127.0.0.1:8000`。MkDocs 会监视文件变化并自动重新生成页面。
+- 原创 LIPM/F 落脚点/DCM 引擎，不依赖 ROS。
+- `K=1.05` 时 7.118 秒前进 5.122 m，全部采样 ZMP 在支撑区间内。
+- 速度完成率 97.3%，开环误差增长比约 25.39。
+- 测试：11 项。
 
-On Windows PowerShell, use `py -m pip install -r requirements.txt` and `py -m mkdocs serve --dev-addr 127.0.0.1:8000`. MkDocs watches for file changes and rebuilds the pages automatically.
+## 3. 多步态平滑切换
 
-### ROS 2 示例开发 / ROS 2 example development
+目录：`03_gait_transition`
 
-构建仓库中的 ROS 2 示例前，先载入对应发行版环境，再按目标功能包的 README 安装依赖并构建。Humble 功能包可使用以下工作区流程：
+- 站立、行走、快步三个步态族和直接切换对照组。
+- Hermite 最大相邻速度差 `0.184 rad/s`，直接切换 `3.855 rad/s`。
+- 速度突变降低 95.23%。
+- 测试：11 项。
 
-Before building a ROS 2 example in this repository, source the matching ROS distribution, then follow the target package README to install dependencies and build. For a Humble package, use this workspace workflow:
+## 4. 键盘驱动双足
 
-```bash
-source /opt/ros/humble/setup.bash
-cd ~/ros2
-rosdep install --from-paths src --ignore-src -r -y
-colcon build --packages-select <package_name>
-source install/setup.bash
-ros2 launch <package_name> <launch_file>
-```
+目录：`04_keyboard_biped`
 
-发行版安装步骤见 [Ubuntu 20.04 与 ROS Noetic](docs/ubuntu20.04.md)，ROS 2 概念与教程见 [第 9 章](docs/chapter/chap9.md)。流程中的 `~/ros2` 为示例工作区路径，请替换为实际工作区；使用 `rosdep` 前需完成 `sudo rosdep init` 与 `rosdep update` 初始化。运行某个示例时，请使用该模块 README 中列出的包名、launch 文件和额外依赖。
+- 原创 10 关节 MuJoCo 双足和跨平台键盘输入。
+- WASD、方向键、空格急停、Q/ESC 退出。
+- 前进 1 秒位移 0.300 m；转向后运动方向与偏航角一致。
+- 测试：8 项。
 
-See [Ubuntu 20.04 and ROS Noetic setup](docs/ubuntu20.04.md) for the existing distribution setup guide and [Chapter 9](docs/chapter/chap9.md) for ROS 2 concepts and tutorials. `~/ros2` in the workflow is an example workspace path; replace it with your actual workspace. Before using `rosdep`, complete `sudo rosdep init` and `rosdep update`. For a specific example, use the package name, launch file, and additional dependencies documented by that module's README.
+## 5. 七轴机械臂键盘控制
 
-文档撰写约定请参考 [OpenHUTB/doc](https://github.com/OpenHUTB/doc)。
+目录：`05_keyboard_arm`
 
+- 原创 7 轴桌面机械臂与两指夹爪。
+- 1～7、Shift+1～7、复位、跨平台键盘输入。
+- 关节 2 阶跃稳态误差约 0.028 rad。
+- 测试：6 项。
 
-## 注意事项
+## 提交时仍需补全
 
-* 提交 Pull Request 前请检查：
-    * **一定**要用 **`mkdocs serve`**（或根目录 `serve.bat`）检查网页的是否为想要的修改效果后再提交
-    * Pull Request 的标题和提交信息不能随意，需要说明为什么修改，而不仅仅是修改了什么
-    * Pull Request 页面的 File changed 下的内容是否为想要的修改
-    * 检查 Pull Request 页面是否有红色的提示（有冲突），如果有请先合并仓库最新修改再新建 Pull Request
-    * 用截图，而不是拍照
-    * 不需要说明个人信息，因为git log的提交记录中有
-    * 每次 Pull Request 都需要保证能够通过main脚本直接运行整个模块，在提交信息中提供运行效果图（动图可以用[ScreenToGif](https://github.com/NickeManarin/ScreenToGif)），README.md文档中提供运行环境和运行步骤的说明
-    * 使用大模型需要在最后声明，并对提交内容负全部责
-    * 约定 Markdown 文档放到 [docs](https://github.com/OpenHUTB/ros2/tree/master/docs) 目录和相应的模块文件夹内，源代码（.py、.cpp等）放到 [src](https://github.com/OpenHUTB/ros2/tree/master/src) 目录和相应的模块文件夹内
-    * 约定文件名命名方式为全英文，不能包含空格、中文和拼音，多个单词用下划线`_`分割
-    * 每个模块的相关文件放在以模块命名的文件夹内，必须支持 launch 启动，入口为main.开头，比如：main.py、main.cpp、main.bat、main.sh等
-    * 每个模块需要在导航栏和首页添加跳转的链接
-    * 模块名不能宽泛，需要具体，不然就和其他人的容易重复
-    * 仓库尽量保存文本文件，二进制文件需要慎重，图片约定使用.png且小于 3 MB，动图使用.gif且小于 10 MB，如运行需要示例数据，可以保存少量数据，大量数据可以通过提供永久网盘链接并说明下载链接和运行说明
-
-
-* 每次合并到主分支之前需要至少一名其他人 测试并同意（另一台机器修改部分的运行结果）
-* Github访问不稳定可以[使用Stem++、fastgithub进行加速（也可使用其他代理）](https://gitee.com/OpenHUTB/sw/releases/tag/up).
-
+请填上本人姓名、学号、班级、课程和日期，并按课程要求如实声明使用了大模型
+辅助。实验结果中的所有限制条件也应保留，尤其不要把这些简化模型描述成完整
+真实机器人系统。
