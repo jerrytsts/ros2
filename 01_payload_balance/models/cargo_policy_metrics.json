@@ -1,0 +1,60 @@
+{
+  "samples": 10080,
+  "episodes": 24,
+  "signals": [
+    "pitch",
+    "pitch_rate",
+    "disturbance",
+    "mass_norm",
+    "phase_sin",
+    "phase_cos",
+    "ankle_prev",
+    "hip_prev"
+  ],
+  "actions": [
+    "ankle_torque",
+    "hip_torque"
+  ],
+  "train_samples": 7980,
+  "validation_samples": 2100,
+  "validation_mse": 0.004712705428143034,
+  "training_seconds": 3.39,
+  "history": [
+    {
+      "epoch": 1,
+      "optimization_mse": 196.30340463329736
+    },
+    {
+      "epoch": 40,
+      "optimization_mse": 0.40972059469174005
+    },
+    {
+      "epoch": 80,
+      "optimization_mse": 0.04478830032494374
+    },
+    {
+      "epoch": 120,
+      "optimization_mse": 0.011342887058528187
+    },
+    {
+      "epoch": 160,
+      "optimization_mse": 0.003969890556766912
+    },
+    {
+      "epoch": 200,
+      "optimization_mse": 0.0020743816018883817
+    },
+    {
+      "epoch": 240,
+      "optimization_mse": 0.0013101150197216377
+    },
+    {
+      "epoch": 280,
+      "optimization_mse": 0.0008383442931456949
+    },
+    {
+      "epoch": 320,
+      "optimization_mse": 0.0007392142959073086
+    }
+  ]
+}
